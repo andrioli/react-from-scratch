@@ -4,6 +4,7 @@
   "description": "React from scratch",
   "main": "index.js",
   "scripts": {
+    "compile": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/andrioli/react-from-scratch/issues"
   },
-  "homepage": "https://github.com/andrioli/react-from-scratch#readme"
+  "homepage": "https://github.com/andrioli/react-from-scratch#readme",
+  "devDependencies": {
+    "webpack": "^3.5.5"
+  }
 }
