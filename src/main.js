@@ -1,4 +1,10 @@
-let name = 'World';
-let greeting = `Hello, ${name}`;
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Hello from './Hello';
 
-console.log(greeting);
+document.addEventListener('DOMContentLoaded', function() {
+  ReactDOM.render(
+    <Hello name='React'/>,
+    document.getElementById('root')
+  );
+});
