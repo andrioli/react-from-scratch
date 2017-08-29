@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
   context: path.join(__dirname, 'src'),
   entry: [
-    './main.js'
+    './main.tsx'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -15,12 +15,6 @@ module.exports = {
         test: /\.tsx?$/,
         use: [
           'ts-loader'
-        ]
-      },
-      {
-        test: /\.js$/,
-        use: [
-          'babel-loader'
         ]
       }
     ]
