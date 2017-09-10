@@ -1,6 +1,7 @@
-const path = require('path');
+import * as path from 'path';
+import * as webpack from 'webpack';
 
-module.exports = {
+const config: webpack.Configuration = {
   context: path.join(__dirname, 'src'),
   entry: [
     './main.tsx'
@@ -27,3 +28,5 @@ module.exports = {
     port: 3000
   }
 };
+
+export default config;
