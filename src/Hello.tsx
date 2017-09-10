@@ -4,7 +4,7 @@ export interface HelloProps {
   name: string;
 }
 
-export default class HelloTS extends React.Component<HelloProps, undefined> {
+export default class Hello extends React.Component<HelloProps, undefined> {
 
   render() {
     return (<span>Hello, {this.props.name}!</span>);

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import HelloTS from './HelloTS';
+import Hello from './Hello';
 
 ReactDOM.render(
-  <HelloTS name='World'/>,
+  <Hello name='World'/>,
   document.getElementById('root')
 );
