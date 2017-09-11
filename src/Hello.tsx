@@ -1,45 +1,45 @@
-import * as React from 'react';
+import * as React from "react";
 
-export interface HelloProps {
+export interface IHelloProps {
   name: string;
 }
 
-export interface HelloState {
+export interface IHelloState {
   value: number;
 }
 
-export default class Hello extends React.Component<HelloProps, HelloState> {
+export default class Hello extends React.Component<IHelloProps, IHelloState> {
 
-  state = {
-    value: 0
+  public state = {
+    value: 0,
   };
 
-  render() {
+  public render() {
     return (
       <div>
         <h1>Hello, {this.props.name}!</h1>
         <h2>{this.state.value}</h2>
-        <a href='#' onClick={e => this.increment(e)}>++</a>
+        <a href="#" onClick={(e) => this.increment(e)}>++</a>
         &nbsp;
-        <a href='#' onClick={e => this.decrement(e)}>--</a>
+        <a href="#" onClick={(e) => this.decrement(e)}>--</a>
       </div>
     );
   }
 
-  increment(e: React.MouseEvent<HTMLAnchorElement>) {
+  private increment(e: React.MouseEvent<HTMLAnchorElement>) {
     e.preventDefault();
     this.setState((prev) => {
       return {
-        value: prev.value + 1
+        value: prev.value + 1,
       };
     });
   }
 
-  decrement(e: React.MouseEvent<HTMLAnchorElement>) {
+  private decrement(e: React.MouseEvent<HTMLAnchorElement>) {
     e.preventDefault();
     this.setState((prev) => {
       return {
-        value: prev.value - 1
+        value: prev.value - 1,
       };
     });
   }
