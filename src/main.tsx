@@ -14,14 +14,10 @@ const store = Redux.createStore((state: number = 0, action) => {
   }
 });
 
-const render = () => {
-  ReactDOM.render(
-    <Hello
-      name="World"
-      store={store}
-    />,
-    document.getElementById("root"),
-  );
-};
-store.subscribe(render);
-render();
+ReactDOM.render(
+  <Hello
+    name="World"
+    store={store}
+  />,
+  document.getElementById("root"),
+);

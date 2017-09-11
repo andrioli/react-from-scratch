@@ -8,10 +8,22 @@ export interface IHelloProps {
 
 export default class Hello extends React.Component<IHelloProps, undefined> {
 
+  private unsubscribe: Redux.Unsubscribe;
+
   constructor(props: IHelloProps) {
     super(props);
     this.increment = this.increment.bind(this);
     this.decrement = this.decrement.bind(this);
+  }
+
+  public componentDidMount() {
+    this.unsubscribe = this.props.store.subscribe(() => {
+      this.forceUpdate();
+    });
+  }
+
+  public componentWillUnmount() {
+    this.unsubscribe();
   }
 
   public render() {
