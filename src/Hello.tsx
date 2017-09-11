@@ -14,14 +14,20 @@ export default class Hello extends React.Component<IHelloProps, IHelloState> {
     value: 0,
   };
 
+  constructor(props: IHelloProps) {
+    super(props);
+    this.increment = this.increment.bind(this);
+    this.decrement = this.decrement.bind(this);
+  }
+
   public render() {
     return (
       <div>
         <h1>Hello, {this.props.name}!</h1>
         <h2>{this.state.value}</h2>
-        <a href="#" onClick={(e) => this.increment(e)}>++</a>
+        <a href="#" onClick={this.increment}>++</a>
         &nbsp;
-        <a href="#" onClick={(e) => this.decrement(e)}>--</a>
+        <a href="#" onClick={this.decrement}>--</a>
       </div>
     );
   }
