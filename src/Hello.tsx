@@ -1,18 +1,12 @@
 import * as React from "react";
+import * as Redux from "redux";
 
 export interface IHelloProps {
   name: string;
+  store: Redux.Store<number>;
 }
 
-export interface IHelloState {
-  value: number;
-}
-
-export default class Hello extends React.Component<IHelloProps, IHelloState> {
-
-  public state = {
-    value: 0,
-  };
+export default class Hello extends React.Component<IHelloProps, undefined> {
 
   constructor(props: IHelloProps) {
     super(props);
@@ -24,7 +18,7 @@ export default class Hello extends React.Component<IHelloProps, IHelloState> {
     return (
       <div>
         <h1>Hello, {this.props.name}!</h1>
-        <h2>{this.state.value}</h2>
+        <h2>{this.props.store.getState()}</h2>
         <a href="#" onClick={this.increment}>++</a>
         &nbsp;
         <a href="#" onClick={this.decrement}>--</a>
@@ -34,19 +28,15 @@ export default class Hello extends React.Component<IHelloProps, IHelloState> {
 
   private increment(e: React.MouseEvent<HTMLAnchorElement>) {
     e.preventDefault();
-    this.setState((prev) => {
-      return {
-        value: prev.value + 1,
-      };
+    this.props.store.dispatch({
+      type: "INCREMENT",
     });
   }
 
   private decrement(e: React.MouseEvent<HTMLAnchorElement>) {
     e.preventDefault();
-    this.setState((prev) => {
-      return {
-        value: prev.value - 1,
-      };
+    this.props.store.dispatch({
+      type: "DECREMENT",
     });
   }
 
