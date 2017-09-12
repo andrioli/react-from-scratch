@@ -56,6 +56,14 @@ function decrement() {
   };
 }
 
+const incrementFn = (dispatch: Redux.Dispatch<number>) => {
+  dispatch(increment());
+};
+
+const decrementFn = (dispatch: Redux.Dispatch<number>) => {
+  dispatch(decrement());
+};
+
 const mapStateToProps = (state: number) => {
   return {
     value: state,
@@ -65,10 +73,10 @@ const mapStateToProps = (state: number) => {
 const mapDispatchToProps = (dispatch: Redux.Dispatch<number>) => {
   return {
     onClickIncrement: () => {
-      dispatch(increment());
+      dispatch(incrementFn);
     },
     onClickDecrement: () => {
-      dispatch(decrement());
+      dispatch(decrementFn);
     },
   };
 };
