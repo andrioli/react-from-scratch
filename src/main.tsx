@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import * as ReactRedux from "react-redux";
 import * as Redux from "redux";
 import Hello from "./Hello";
 
@@ -15,9 +16,8 @@ const store = Redux.createStore((state: number = 0, action) => {
 });
 
 ReactDOM.render(
-  <Hello
-    name="World"
-    store={store}
-  />,
+  <ReactRedux.Provider store={store}>
+    <Hello name="World"/>
+  </ReactRedux.Provider>,
   document.getElementById("root"),
 );

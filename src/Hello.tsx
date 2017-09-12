@@ -3,10 +3,19 @@ import * as Redux from "redux";
 
 export interface IHelloProps {
   name: string;
+}
+
+export interface IContext {
   store: Redux.Store<number>;
 }
 
 export default class Hello extends React.Component<IHelloProps, undefined> {
+
+  private static contextTypes = {
+    store: React.PropTypes.object,
+  };
+
+  public context: IContext;
 
   private unsubscribe: Redux.Unsubscribe;
 
@@ -17,7 +26,7 @@ export default class Hello extends React.Component<IHelloProps, undefined> {
   }
 
   public componentDidMount() {
-    this.unsubscribe = this.props.store.subscribe(() => {
+    this.unsubscribe = this.context.store.subscribe(() => {
       this.forceUpdate();
     });
   }
@@ -30,7 +39,7 @@ export default class Hello extends React.Component<IHelloProps, undefined> {
     return (
       <div>
         <h1>Hello, {this.props.name}!</h1>
-        <h2>{this.props.store.getState()}</h2>
+        <h2>{this.context.store.getState()}</h2>
         <a href="#" onClick={this.increment}>++</a>
         &nbsp;
         <a href="#" onClick={this.decrement}>--</a>
@@ -40,14 +49,14 @@ export default class Hello extends React.Component<IHelloProps, undefined> {
 
   private increment(e: React.MouseEvent<HTMLAnchorElement>) {
     e.preventDefault();
-    this.props.store.dispatch({
+    this.context.store.dispatch({
       type: "INCREMENT",
     });
   }
 
   private decrement(e: React.MouseEvent<HTMLAnchorElement>) {
     e.preventDefault();
-    this.props.store.dispatch({
+    this.context.store.dispatch({
       type: "DECREMENT",
     });
   }
