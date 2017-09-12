@@ -41,6 +41,21 @@ class Counter extends React.Component<ICounterProps, undefined> {
 
 }
 
+const INCREMENT = "INCREMENT";
+const DECREMENT = "DECREMENT";
+
+function increment() {
+  return {
+    type: INCREMENT,
+  };
+}
+
+function decrement() {
+  return {
+    type: DECREMENT,
+  };
+}
+
 const mapStateToProps = (state: number) => {
   return {
     value: state,
@@ -50,14 +65,10 @@ const mapStateToProps = (state: number) => {
 const mapDispatchToProps = (dispatch: Redux.Dispatch<number>) => {
   return {
     onClickIncrement: () => {
-      dispatch({
-        type: "INCREMENT",
-      });
+      dispatch(increment());
     },
     onClickDecrement: () => {
-      dispatch({
-        type: "DECREMENT",
-      });
+      dispatch(decrement());
     },
   };
 };
