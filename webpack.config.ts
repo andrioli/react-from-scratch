@@ -1,3 +1,4 @@
+import * as HtmlWebpackPlugin from "html-webpack-plugin";
 import * as path from "path";
 import * as webpack from "webpack";
 
@@ -34,6 +35,12 @@ const config: webpack.Configuration = {
     contentBase: path.join(__dirname, "public"),
     port: 3000,
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: path.join(__dirname, "public/index.html"),
+    }),
+  ],
 };
 
 export default config;
