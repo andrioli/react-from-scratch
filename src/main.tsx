@@ -3,7 +3,7 @@ import * as ReactDOM from "react-dom";
 import * as ReactRedux from "react-redux";
 import * as Redux from "redux";
 import * as ReduxThunk from "redux-thunk";
-import Hello from "./Hello";
+import Counter from "./Counter";
 
 const store = Redux.createStore((state: number = 0, action) => {
   switch (action.type) {
@@ -18,7 +18,7 @@ const store = Redux.createStore((state: number = 0, action) => {
 
 ReactDOM.render(
   <ReactRedux.Provider store={store}>
-    <Hello name="World"/>
+    <Counter name="World"/>
   </ReactRedux.Provider>,
   document.getElementById("root"),
 );

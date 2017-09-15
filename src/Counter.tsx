@@ -44,46 +44,36 @@ class Counter extends React.Component<ICounterProps, undefined> {
 const INCREMENT = "INCREMENT";
 const DECREMENT = "DECREMENT";
 
-function increment() {
-  return {
-    type: INCREMENT,
-  };
-}
+const incrementAction = () => ({
+  type: INCREMENT,
+});
 
-function decrement() {
-  return {
-    type: DECREMENT,
-  };
-}
+const decrementAction = () => ({
+  type: DECREMENT,
+});
 
-const incrementFn = (dispatch: Redux.Dispatch<number>) => {
-  dispatch(increment());
+const increment = (dispatch: Redux.Dispatch<number>) => {
+  dispatch(incrementAction());
 };
 
-const decrementFn = (dispatch: Redux.Dispatch<number>) => {
-  dispatch(decrement());
+const decrement = (dispatch: Redux.Dispatch<number>) => {
+  dispatch(decrementAction());
 };
 
-const mapStateToProps = (state: number) => {
-  return {
-    value: state,
-  };
-};
+const mapStateToProps = (state: number) => ({
+  value: state,
+});
 
-const mapDispatchToProps = (dispatch: Redux.Dispatch<number>) => {
-  return {
-    onClickIncrement: () => {
-      dispatch(incrementFn);
-    },
-    onClickDecrement: () => {
-      dispatch(decrementFn);
-    },
-  };
-};
+const mapDispatchToProps = (dispatch: Redux.Dispatch<number>) => ({
+  onClickIncrement() {
+    dispatch(increment);
+  },
+  onClickDecrement() {
+    dispatch(decrement);
+  },
+});
 
-const Hello = ReactRedux.connect(
+export default ReactRedux.connect(
   mapStateToProps,
   mapDispatchToProps,
 )(Counter);
-
-export default Hello;
