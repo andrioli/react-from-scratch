@@ -1,6 +1,15 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "jsx": "react"
+    "jsx": "react",
+    "removeComments": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
   }
 }

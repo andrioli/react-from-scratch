@@ -5,11 +5,11 @@ import * as Redux from "redux";
 interface ICounterProps {
   name: string;
   value: number;
-  onClickIncrement();
-  onClickDecrement();
+  onClickIncrement: () => void;
+  onClickDecrement: () => void;
 }
 
-class Counter extends React.Component<ICounterProps, undefined> {
+class Counter extends React.Component<ICounterProps, any> {
 
   constructor(props: ICounterProps) {
     super(props);
