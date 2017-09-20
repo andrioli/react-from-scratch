@@ -3,13 +3,13 @@ import * as ReactDOM from "react-dom";
 import * as ReactRedux from "react-redux";
 import * as Redux from "redux";
 import * as ReduxThunk from "redux-thunk";
-import Counter from "./Counter";
+import Counter, { CounterAction, DECREMENT, INCREMENT } from "./Counter";
 
-const store = Redux.createStore((state: number = 0, action: Redux.AnyAction) => {
+const store = Redux.createStore((state: number = 0, action: CounterAction) => {
   switch (action.type) {
-    case "INCREMENT":
+    case INCREMENT:
       return state + 1;
-    case "DECREMENT":
+    case DECREMENT:
       return state - 1;
     default:
       return state;

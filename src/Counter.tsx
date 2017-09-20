@@ -41,14 +41,27 @@ class Counter extends React.Component<ICounterProps, any> {
 
 }
 
-const INCREMENT = "INCREMENT";
-const DECREMENT = "DECREMENT";
+export const INCREMENT = "INCREMENT";
+export const DECREMENT = "DECREMENT";
 
-const incrementAction = () => ({
+export type INCREMENT = typeof INCREMENT;
+export type DECREMENT = typeof DECREMENT;
+
+export interface IIncrementAction {
+  type: INCREMENT;
+}
+
+export interface IDecrementAction {
+  type: DECREMENT;
+}
+
+export type CounterAction = IIncrementAction | IDecrementAction;
+
+const incrementAction: () => IIncrementAction = () => ({
   type: INCREMENT,
 });
 
-const decrementAction = () => ({
+const decrementAction: () => IDecrementAction = () => ({
   type: DECREMENT,
 });
 
