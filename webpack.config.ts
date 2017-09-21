@@ -26,6 +26,12 @@ const config: webpack.Configuration = {
           "ts-loader",
         ],
       },
+      {
+        test: /\.css$/,
+        use: [
+          "style-loader", "css-loader",
+        ],
+      },
     ],
   },
   resolve: {
