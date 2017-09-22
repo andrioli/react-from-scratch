@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactRedux from "react-redux";
 import * as Redux from "redux";
-import "./Counter.css";
+import "./Counter.scss";
 
 interface ICounterProps {
   name: string;
