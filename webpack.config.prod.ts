@@ -46,6 +46,16 @@ const config: webpack.Configuration = {
       inject: true,
       template: path.join(__dirname, "public/index.html"),
     }),
+    new webpack.DefinePlugin({
+      "process.env": {
+        NODE_ENV: JSON.stringify("production"),
+      },
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      output: {
+        ascii_only: true,
+      },
+    } as any),
   ],
 };
 
