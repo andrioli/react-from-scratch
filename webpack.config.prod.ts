@@ -45,6 +45,9 @@ const config: webpack.Configuration = {
     new HtmlWebpackPlugin({
       inject: true,
       template: path.join(__dirname, "public/index.html"),
+      minify: {
+        collapseWhitespace: true,
+      },
     }),
     new webpack.DefinePlugin({
       "process.env": {
