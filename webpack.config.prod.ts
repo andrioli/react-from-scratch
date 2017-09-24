@@ -1,3 +1,4 @@
+import * as ExtractTextWebpackPlugin from "extract-text-webpack-plugin";
 import * as HtmlWebpackPlugin from "html-webpack-plugin";
 import * as path from "path";
 import * as webpack from "webpack";
@@ -28,9 +29,12 @@ const config: webpack.Configuration = {
       },
       {
         test: /\.scss$/,
-        use: [
-          "style-loader", "css-loader", "sass-loader",
-        ],
+        use: ExtractTextWebpackPlugin.extract({
+          fallback: "style-loader",
+          use: [
+            "css-loader", "sass-loader",
+          ],
+        }),
       },
     ],
   },
@@ -59,6 +63,9 @@ const config: webpack.Configuration = {
         ascii_only: true,
       },
     } as any),
+    new ExtractTextWebpackPlugin({
+      filename: "[name].css",
+    }),
   ],
 };
 
