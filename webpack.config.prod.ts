@@ -32,7 +32,13 @@ const config: webpack.Configuration = {
         use: ExtractTextWebpackPlugin.extract({
           fallback: "style-loader",
           use: [
-            "css-loader", "sass-loader",
+            {
+              loader: "css-loader",
+              options: {
+                minimize: true,
+              },
+            },
+            "sass-loader",
           ],
         }),
       },
