@@ -2,6 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import * as ReactRedux from "react-redux";
 import * as Redux from "redux";
+import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
 import * as ReduxThunk from "redux-thunk";
 import Counter, { CounterAction, DECREMENT, INCREMENT } from "./Counter";
 
@@ -14,7 +15,7 @@ const store = Redux.createStore((state: number = 0, action: CounterAction) => {
     default:
       return state;
   }
-}, Redux.applyMiddleware(ReduxThunk.default));
+}, composeWithDevTools(Redux.applyMiddleware(ReduxThunk.default)));
 
 ReactDOM.render(
   <ReactRedux.Provider store={store}>
