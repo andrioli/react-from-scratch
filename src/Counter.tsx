@@ -10,7 +10,7 @@ interface ICounterProps {
   onClickDecrement: () => void;
 }
 
-class Counter extends React.Component<ICounterProps, any> {
+export class Counter extends React.Component<ICounterProps, any> {
 
   constructor(props: ICounterProps) {
     super(props);

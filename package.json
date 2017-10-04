@@ -53,7 +53,8 @@
   },
   "jest": {
     "transform": {
-      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js",
+      "^.+\\.scss$": "<rootDir>/jestSassTransform.js"
     },
     "testRegex": "\\.test\\.tsx?$",
     "moduleFileExtensions": [
