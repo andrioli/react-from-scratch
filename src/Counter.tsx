@@ -1,7 +1,7 @@
-import * as React from "react";
-import * as ReactRedux from "react-redux";
-import * as Redux from "redux";
-import "./Counter.scss";
+import * as React from 'react';
+import * as ReactRedux from 'react-redux';
+import * as Redux from 'redux';
+import './Counter.scss';
 
 interface ICounterProps {
   name: string;
@@ -42,8 +42,8 @@ export class Counter extends React.Component<ICounterProps, any> {
 
 }
 
-export const INCREMENT = "INCREMENT";
-export const DECREMENT = "DECREMENT";
+export const INCREMENT = 'INCREMENT';
+export const DECREMENT = 'DECREMENT';
 
 export type INCREMENT = typeof INCREMENT;
 export type DECREMENT = typeof DECREMENT;

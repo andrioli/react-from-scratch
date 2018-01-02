@@ -6,6 +6,7 @@
     "jsRules": {},
     "rules": {
       "object-literal-sort-keys": false,
+      "quotemark": [true, "single", "jsx-double"],
       "jsx-no-lambda": false,
       "jsx-no-multiline-js": false
     },

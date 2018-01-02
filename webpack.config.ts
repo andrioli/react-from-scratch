@@ -1,51 +1,51 @@
-import * as HtmlWebpackPlugin from "html-webpack-plugin";
-import * as path from "path";
-import * as webpack from "webpack";
+import * as HtmlWebpackPlugin from 'html-webpack-plugin';
+import * as path from 'path';
+import * as webpack from 'webpack';
 
 const config: webpack.Configuration = {
-  context: path.join(__dirname, "src"),
+  context: path.join(__dirname, 'src'),
   entry: [
-    "./main.tsx",
+    './main.tsx',
   ],
   output: {
-    path: path.join(__dirname, "dist"),
-    filename: "bundle.js",
+    path: path.join(__dirname, 'dist'),
+    filename: 'bundle.js',
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        enforce: "pre",
+        enforce: 'pre',
         use: [
-          "tslint-loader",
+          'tslint-loader',
         ],
       },
       {
         test: /\.tsx?$/,
         use: [
-          "ts-loader",
+          'ts-loader',
         ],
       },
       {
         test: /\.scss$/,
         use: [
-          "style-loader", "css-loader", "sass-loader",
+          'style-loader', 'css-loader', 'sass-loader',
         ],
       },
     ],
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js"],
+    extensions: ['.ts', '.tsx', '.js'],
   },
   devServer: {
-    contentBase: path.join(__dirname, "public"),
+    contentBase: path.join(__dirname, 'public'),
     port: 3000,
     hot: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
       inject: true,
-      template: path.join(__dirname, "public/index.html"),
+      template: path.join(__dirname, 'public/index.html'),
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],
