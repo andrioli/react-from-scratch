@@ -4,6 +4,7 @@
   "description": "React from scratch",
   "main": "index.js",
   "scripts": {
+    "lint": "tslint --project tsconfig.json",
     "compile": "webpack --config webpack.config.prod.ts",
     "start": "webpack-dev-server",
     "test": "jest"
