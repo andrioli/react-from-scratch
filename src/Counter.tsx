@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Helmet } from 'react-helmet';
 import * as ReactRedux from 'react-redux';
 import * as Redux from 'redux';
 import './Counter.scss';
@@ -21,6 +22,9 @@ export class Counter extends React.Component<CounterProps, any> {
   public render() {
     return (
       <div>
+        <Helmet>
+          <title>Counter for {this.props.name}</title>
+        </Helmet>
         <h1>Hello, {this.props.name}!</h1>
         <h2>{this.props.value}</h2>
         <a href="#" onClick={this.increment}>++</a>
