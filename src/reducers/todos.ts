@@ -1,7 +1,7 @@
-import { TodoAction } from '../actions/todo';
+import { TodoAppAction } from '../actions/todoApp';
 import Todo from '../models/Todo';
 
-const todo = (state: Todo|undefined, action: TodoAction) => {
+const todo = (state: Todo|undefined, action: TodoAppAction) => {
   switch (action.type) {
     case 'ADD_TODO':
       return {
@@ -23,7 +23,7 @@ const todo = (state: Todo|undefined, action: TodoAction) => {
   }
 };
 
-const todos = (state: Todo[] = [], action: TodoAction) => {
+const todos = (state: Todo[] = [], action: TodoAppAction) => {
   switch (action.type) {
     case 'ADD_TODO':
       return [
