@@ -1,4 +1,4 @@
-import { CounterAction, DECREMENT, INCREMENT } from '../Counter';
+import { CounterAction, DECREMENT, INCREMENT } from '../actions/counter';
 
 const counter = (state: number = 0, action: CounterAction) => {
   switch (action.type) {

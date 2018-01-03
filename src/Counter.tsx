@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import * as ReactRedux from 'react-redux';
 import * as Redux from 'redux';
+import { decrement, increment } from './actions/counter';
 import './Counter.scss';
 
 interface CounterProps {
@@ -45,38 +46,6 @@ export class Counter extends React.Component<CounterProps, any> {
   }
 
 }
-
-export const INCREMENT = 'INCREMENT';
-export const DECREMENT = 'DECREMENT';
-
-export type INCREMENT = typeof INCREMENT;
-export type DECREMENT = typeof DECREMENT;
-
-export interface IncrementAction {
-  type: INCREMENT;
-}
-
-export interface DecrementAction {
-  type: DECREMENT;
-}
-
-export type CounterAction = IncrementAction | DecrementAction;
-
-const incrementAction: () => IncrementAction = () => ({
-  type: INCREMENT,
-});
-
-const decrementAction: () => DecrementAction = () => ({
-  type: DECREMENT,
-});
-
-const increment = (dispatch: Redux.Dispatch<number>) => {
-  dispatch(incrementAction());
-};
-
-const decrement = (dispatch: Redux.Dispatch<number>) => {
-  dispatch(decrementAction());
-};
 
 const mapStateToProps = (state: number) => ({
   value: state,
