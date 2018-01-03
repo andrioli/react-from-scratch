@@ -47,6 +47,10 @@ const config: webpack.Configuration = {
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
+    alias: {
+      'react': 'preact-compat',
+      'react-dom': 'preact-compat',
+    },
   },
   devServer: {
     contentBase: path.join(__dirname, 'public'),

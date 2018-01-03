@@ -51,6 +51,8 @@
     "webpack-dev-server": "^2.7.1"
   },
   "dependencies": {
+    "preact": "^8.2.7",
+    "preact-compat": "^3.17.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-helmet": "^5.2.0",
