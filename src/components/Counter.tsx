@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Helmet } from 'react-helmet';
+import * as ReactHelmet from 'react-helmet';
 import './Counter.scss';
 
 interface CounterProps {
@@ -20,9 +20,9 @@ class Counter extends React.Component<CounterProps> {
   public render() {
     return (
       <div>
-        <Helmet>
+        <ReactHelmet.Helmet>
           <title>Counter for {this.props.name}</title>
-        </Helmet>
+        </ReactHelmet.Helmet>
         <h1>Hello, {this.props.name}!</h1>
         <h2>{this.props.value}</h2>
         <a href="#" onClick={this.increment}>++</a>

@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import * as ReactRouter from 'react-router-dom';
 import Counter from './containers/Counter';
 
 const App = () => (
-  <Router>
-    <Route
+  <ReactRouter.BrowserRouter>
+    <ReactRouter.Route
       path="/:name?"
       render={(routeProps) => {
         const name: string = routeProps.match.params.name || 'World';
         return <Counter name={name}/>;
       }}
     />
-  </Router>
+  </ReactRouter.BrowserRouter>
 );
 
 export default App;
