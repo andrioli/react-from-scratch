@@ -11,6 +11,7 @@ const config: webpack.Configuration = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
+    publicPath: '/',
   },
   module: {
     rules: [
