@@ -41,6 +41,9 @@ const config: webpack.Configuration = {
     contentBase: path.join(__dirname, 'public'),
     port: 3000,
     hot: true,
+    historyApiFallback: {
+      disableDotRule: true,
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
