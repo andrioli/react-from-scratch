@@ -5,18 +5,11 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import * as Redux from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import * as ReduxThunk from 'redux-thunk';
-import Counter, { CounterAction, DECREMENT, INCREMENT } from './Counter';
+import Counter from './Counter';
+import counter from './reducers/counter';
 
-const store = Redux.createStore((state: number = 0, action: CounterAction) => {
-  switch (action.type) {
-    case INCREMENT:
-      return state + 1;
-    case DECREMENT:
-      return state - 1;
-    default:
-      return state;
-  }
-}, composeWithDevTools(Redux.applyMiddleware(ReduxThunk.default)));
+const store = Redux.createStore(counter,
+  composeWithDevTools(Redux.applyMiddleware(ReduxThunk.default)));
 
 ReactDOM.render(
   <ReactRedux.Provider store={store}>
