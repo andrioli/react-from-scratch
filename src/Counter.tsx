@@ -3,16 +3,16 @@ import * as ReactRedux from 'react-redux';
 import * as Redux from 'redux';
 import './Counter.scss';
 
-interface ICounterProps {
+interface CounterProps {
   name: string;
   value: number;
   onClickIncrement: () => void;
   onClickDecrement: () => void;
 }
 
-export class Counter extends React.Component<ICounterProps, any> {
+export class Counter extends React.Component<CounterProps, any> {
 
-  constructor(props: ICounterProps) {
+  constructor(props: CounterProps) {
     super(props);
     this.increment = this.increment.bind(this);
     this.decrement = this.decrement.bind(this);
@@ -48,21 +48,21 @@ export const DECREMENT = 'DECREMENT';
 export type INCREMENT = typeof INCREMENT;
 export type DECREMENT = typeof DECREMENT;
 
-export interface IIncrementAction {
+export interface IncrementAction {
   type: INCREMENT;
 }
 
-export interface IDecrementAction {
+export interface DecrementAction {
   type: DECREMENT;
 }
 
-export type CounterAction = IIncrementAction | IDecrementAction;
+export type CounterAction = IncrementAction | DecrementAction;
 
-const incrementAction: () => IIncrementAction = () => ({
+const incrementAction: () => IncrementAction = () => ({
   type: INCREMENT,
 });
 
-const decrementAction: () => IDecrementAction = () => ({
+const decrementAction: () => DecrementAction = () => ({
   type: DECREMENT,
 });
 
