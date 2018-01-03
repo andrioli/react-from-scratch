@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import * as Redux from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import * as ReduxThunk from 'redux-thunk';
-import Counter from './Counter';
+import Counter from './components/containers/Counter';
 import counter from './reducers/counter';
 
 const store = Redux.createStore(counter,

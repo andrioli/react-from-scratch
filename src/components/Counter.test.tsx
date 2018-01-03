@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Counter } from './Counter';
+import Counter from './Counter';
 
-const noop = () => { /* do nothing */};
+const noop = () => { /* do nothing */ };
 
 it('renders Counter without crashing', () => {
   const div = document.createElement('div');

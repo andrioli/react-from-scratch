@@ -1,8 +1,5 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
-import * as ReactRedux from 'react-redux';
-import * as Redux from 'redux';
-import { decrement, increment } from './actions/counter';
 import './Counter.scss';
 
 interface CounterProps {
@@ -12,7 +9,7 @@ interface CounterProps {
   onClickDecrement: () => void;
 }
 
-export class Counter extends React.Component<CounterProps, any> {
+class Counter extends React.Component<CounterProps> {
 
   constructor(props: CounterProps) {
     super(props);
@@ -47,20 +44,4 @@ export class Counter extends React.Component<CounterProps, any> {
 
 }
 
-const mapStateToProps = (state: number) => ({
-  value: state,
-});
-
-const mapDispatchToProps = (dispatch: Redux.Dispatch<number>) => ({
-  onClickIncrement() {
-    dispatch(increment);
-  },
-  onClickDecrement() {
-    dispatch(decrement);
-  },
-});
-
-export default ReactRedux.connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Counter);
+export default Counter;
