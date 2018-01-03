@@ -1,19 +1,11 @@
-import { TodoAppAction } from '../actions/todoApp';
+import * as Redux from 'redux';
 import TodoApp from '../models/TodoApp';
 import todos from './todos';
 import visibilityFilter from './visibilityFilter';
 
-const todoApp = (state: TodoApp = {}, action: TodoAppAction) => {
-  return {
-    todos: todos(
-      state.todos,
-      action,
-    ),
-    visibilityFilter: visibilityFilter(
-      state.visibilityFilter,
-      action,
-    ),
-  };
-};
+const todoApp = Redux.combineReducers<TodoApp>({
+  todos,
+  visibilityFilter,
+});
 
 export default todoApp;
