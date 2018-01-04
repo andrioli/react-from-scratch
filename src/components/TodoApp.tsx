@@ -5,7 +5,7 @@ import Todo from '../models/Todo';
 import State from '../models/TodoApp';
 import VisibilityFilter from '../models/VisibilityFilter';
 import FilterLink from './FilterLink';
-import TodoComponent from './Todo';
+import TodoList from './TodoList';
 
 interface TodoAppProps {
   todos: Todo[];
@@ -55,18 +55,10 @@ class TodoApp extends React.Component<TodoAppProps> {
         >
           Add Todo
         </button>
-        <ul>
-          {
-            visibleTodos.map((todo) =>
-              <TodoComponent
-                key={todo.id}
-                onClick={() => onTodoClick(todo.id)}
-                completed={todo.completed}
-                text={todo.text}
-              />,
-            )
-          }
-        </ul>
+        <TodoList
+          todos={visibleTodos}
+          onTodoClick={onTodoClick}
+        />
         Show:
         {' '}
         <FilterLink
