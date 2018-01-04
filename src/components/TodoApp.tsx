@@ -5,6 +5,7 @@ import Todo from '../models/Todo';
 import State from '../models/TodoApp';
 import VisibilityFilter from '../models/VisibilityFilter';
 import FilterLink from './FilterLink';
+import TodoComponent from './Todo';
 
 interface TodoAppProps {
   todos: Todo[];
@@ -57,15 +58,12 @@ class TodoApp extends React.Component<TodoAppProps> {
         <ul>
           {
             visibleTodos.map((todo) =>
-              <li
+              <TodoComponent
                 key={todo.id}
                 onClick={() => onTodoClick(todo.id)}
-                style={{
-                  textDecoration: todo.completed ? 'line-through' : 'none',
-                }}
-              >
-                {todo.text}
-              </li>,
+                completed={todo.completed}
+                text={todo.text}
+              />,
             )
           }
         </ul>
