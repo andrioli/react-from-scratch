@@ -15,5 +15,17 @@ export interface ToggleTodoAction {
   id: number;
 }
 
+let nextTodoId = 0;
+export const addTodo: (text: string) => AddTodoAction = (text) => ({
+  type: ADD_TODO,
+  id: nextTodoId++,
+  text,
+});
+
+export const toggleTodo: (id: number) => ToggleTodoAction = (id) => ({
+  type: TOGGLE_TODO,
+  id,
+});
+
 export type TodoAction = AddTodoAction |
                          ToggleTodoAction;

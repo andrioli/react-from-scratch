@@ -9,4 +9,9 @@ export interface SetVisibilityFilterAction {
   filter: VisibilityFilter;
 }
 
+export const setVisibilityFilter: (filter: VisibilityFilter) => SetVisibilityFilterAction = (filter) => ({
+  type: SET_VISIBILITY_FILTER,
+  filter,
+});
+
 export type VisibilityFilterAction = SetVisibilityFilterAction;

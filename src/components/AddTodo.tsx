@@ -1,8 +1,7 @@
 import * as React from 'react';
 import * as ReactRedux from 'react-redux';
+import { addTodo } from '../actions/todo';
 import TodoApp from '../models/TodoApp';
-
-let nextTodoId = 0;
 
 const AddTodo: React.SFC<ReactRedux.DispatchProp<TodoApp>> = ({
   dispatch,
@@ -17,11 +16,7 @@ const AddTodo: React.SFC<ReactRedux.DispatchProp<TodoApp>> = ({
       />
       <button
         onClick={() => {
-          dispatch!({
-            type: 'ADD_TODO',
-            id: nextTodoId++,
-            text: input.value,
-          });
+          dispatch!(addTodo(input.value));
           input.value = '';
         }}
       >

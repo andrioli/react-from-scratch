@@ -1,15 +1,11 @@
 import * as deepFreeze from 'deep-freeze';
-import { AddTodoAction, ToggleTodoAction } from '../actions/todo';
+import { addTodo, toggleTodo } from '../actions/todo';
 import Todo from '../models/Todo';
 import todos from './todos';
 
 it('should add a Todo correctly', () => {
   const stateBefore: Todo[] = [];
-  const action: AddTodoAction = {
-    type: 'ADD_TODO',
-    id: 0,
-    text: 'Learn Redux',
-  };
+  const action = addTodo('Learn Redux');
   const stateAfter: Todo[] = [
     {
       id: 0,
@@ -37,10 +33,7 @@ it ('should toggle a Todo correctly', () => {
       completed: false,
     },
   ];
-  const action: ToggleTodoAction = {
-    type: 'TOGGLE_TODO',
-    id: 1,
-  };
+  const action = toggleTodo(1);
   const stateAfter: Todo[] = [
     {
       id: 0,
