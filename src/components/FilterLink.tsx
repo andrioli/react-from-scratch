@@ -1,5 +1,9 @@
 import * as React from 'react';
+import * as ReactRedux from 'react-redux';
+import * as Redux from 'redux';
+import TodoApp from '../models/TodoApp';
 import VisibilityFilter from '../models/VisibilityFilter';
+import Link from './Link';
 
 interface FilterLinkProps {
   filter: VisibilityFilter;
@@ -13,20 +17,30 @@ const FilterLink: React.SFC<FilterLinkProps> = ({
   onClick,
   children,
 }) => {
-  if (filter === currentFilter) {
-    return <span>{children}</span>;
-  }
   return (
-    <a
-      href="#"
-      onClick={(e) => {
-        e.preventDefault();
-        onClick(filter);
-      }}
+    <Link
+      active={filter === currentFilter}
+      onClick={() => onClick(filter)}
     >
       {children}
-    </a>
+    </Link>
   );
 };
 
-export default FilterLink;
+const mapStateToProps = (state: TodoApp) => ({
+  currentFilter: state.visibilityFilter,
+});
+
+const mapDispatchToProps = (dispatch: Redux.Dispatch<TodoApp>) => ({
+  onClick(filter: VisibilityFilter) {
+    dispatch({
+      type: 'SET_VISIBILITY_FILTER',
+      filter,
+    });
+  },
+});
+
+export default ReactRedux.connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(FilterLink);
