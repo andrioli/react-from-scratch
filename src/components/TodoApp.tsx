@@ -30,33 +30,27 @@ const getVisibleTodos = (
   }
 };
 
-class TodoApp extends React.Component<TodoAppProps> {
-
-  public render() {
-    const {
-      todos,
-      visibilityFilter,
-      onAddClick,
-      onTodoClick,
-      onFilterClick,
-    } = this.props;
-    const visibleTodos = getVisibleTodos(todos, visibilityFilter);
-    return (
-      <div>
-        <AddTodo onAddClick={onAddClick} />
-        <TodoList
-          todos={visibleTodos}
-          onTodoClick={onTodoClick}
-        />
-        <Footer
-          visibilityFilter={visibilityFilter}
-          onFilterClick={onFilterClick}
-        />
-      </div>
-    );
-  }
-
-}
+const TodoApp: React.SFC<TodoAppProps> = ({
+  todos,
+  visibilityFilter,
+  onAddClick,
+  onTodoClick,
+  onFilterClick,
+}) => (
+  <div>
+    <AddTodo onAddClick={onAddClick} />
+    <TodoList
+      todos={
+        getVisibleTodos(todos, visibilityFilter)
+      }
+      onTodoClick={onTodoClick}
+    />
+    <Footer
+      visibilityFilter={visibilityFilter}
+      onFilterClick={onFilterClick}
+    />
+  </div>
+);
 
 let nextTodoId = 0;
 
