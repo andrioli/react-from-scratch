@@ -1,4 +1,3 @@
-import * as React from 'react';
 import * as ReactRedux from 'react-redux';
 import * as Redux from 'redux';
 import Todo from '../models/Todo';
@@ -20,28 +19,11 @@ const getVisibleTodos = (
   }
 };
 
-interface VisibleTodoListProps {
-  todos: Todo[];
-  visibilityFilter: VisibilityFilter;
-  onTodoClick: (id: number) => void;
-}
-
-const VisibleTodoList: React.SFC<VisibleTodoListProps> = ({
-  todos,
-  visibilityFilter,
-  onTodoClick,
-}) => (
-  <TodoList
-    todos={
-      getVisibleTodos(todos, visibilityFilter)
-    }
-    onTodoClick={onTodoClick}
-  />
-);
-
 const mapStateToProps = (state: TodoApp) => ({
-  todos: state.todos,
-  visibilityFilter: state.visibilityFilter,
+  todos: getVisibleTodos(
+    state.todos,
+    state.visibilityFilter,
+  ),
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<TodoApp>) => ({
@@ -56,4 +38,4 @@ const mapDispatchToProps = (dispatch: Redux.Dispatch<TodoApp>) => ({
 export default ReactRedux.connect(
   mapStateToProps,
   mapDispatchToProps,
-)(VisibleTodoList);
+)(TodoList);
