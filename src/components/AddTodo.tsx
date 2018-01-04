@@ -1,11 +1,11 @@
 import * as React from 'react';
+import * as ReactRedux from 'react-redux';
+import TodoApp from '../models/TodoApp';
 
-interface AddTodoProps {
-  onAddClick: (text: string) => void;
-}
+let nextTodoId = 0;
 
-const AddTodo: React.SFC<AddTodoProps> = ({
-  onAddClick,
+const AddTodo: React.SFC<ReactRedux.DispatchProp<TodoApp>> = ({
+  dispatch,
 }) => {
   let input: HTMLInputElement;
   return (
@@ -17,7 +17,11 @@ const AddTodo: React.SFC<AddTodoProps> = ({
       />
       <button
         onClick={() => {
-          onAddClick(input.value);
+          dispatch!({
+            type: 'ADD_TODO',
+            id: nextTodoId++,
+            text: input.value,
+          });
           input.value = '';
         }}
       >
@@ -27,4 +31,4 @@ const AddTodo: React.SFC<AddTodoProps> = ({
   );
 };
 
-export default AddTodo;
+export default ReactRedux.connect()(AddTodo);
