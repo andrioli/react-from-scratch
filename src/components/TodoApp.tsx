@@ -7,6 +7,7 @@ import State from '../models/TodoApp';
 interface TodoAppProps {
   todos: Todo[];
   onButtonClick: (text: string) => void;
+  onTodoClick: (id: number) => void;
 }
 
 class TodoApp extends React.Component<TodoAppProps> {
@@ -32,7 +33,13 @@ class TodoApp extends React.Component<TodoAppProps> {
         <ul>
           {
             this.props.todos.map((todo) =>
-              <li key={todo.id}>
+              <li
+                key={todo.id}
+                onClick={() => this.props.onTodoClick(todo.id)}
+                style={{
+                  textDecoration: todo.completed ? 'line-through' : 'none',
+                }}
+              >
                 {todo.text}
               </li>,
             )
@@ -56,6 +63,12 @@ const mapDispatchToProps = (dispatch: Redux.Dispatch<State>) => ({
       type: 'ADD_TODO',
       id: nextTodoId++,
       text,
+    });
+  },
+  onTodoClick(id: number) {
+    dispatch({
+      type: 'TOGGLE_TODO',
+      id,
     });
   },
 });
