@@ -4,13 +4,14 @@ import * as Redux from 'redux';
 import Todo from '../models/Todo';
 import State from '../models/TodoApp';
 import VisibilityFilter from '../models/VisibilityFilter';
+import AddTodo from './AddTodo';
 import FilterLink from './FilterLink';
 import TodoList from './TodoList';
 
 interface TodoAppProps {
   todos: Todo[];
   visibilityFilter: VisibilityFilter;
-  onButtonClick: (text: string) => void;
+  onAddClick: (text: string) => void;
   onTodoClick: (id: number) => void;
 }
 
@@ -30,31 +31,17 @@ const getVisibleTodos = (
 
 class TodoApp extends React.Component<TodoAppProps> {
 
-  private input: HTMLInputElement;
-
   public render() {
     const {
       todos,
       visibilityFilter,
-      onButtonClick,
+      onAddClick,
       onTodoClick,
     } = this.props;
     const visibleTodos = getVisibleTodos(todos, visibilityFilter);
     return (
       <div>
-        <input
-          ref={(e) => {
-            this.input = e!;
-          }}
-        />
-        <button
-          onClick={() => {
-            onButtonClick(this.input.value);
-            this.input.value = '';
-          }}
-        >
-          Add Todo
-        </button>
+        <AddTodo onAddClick={onAddClick} />
         <TodoList
           todos={visibleTodos}
           onTodoClick={onTodoClick}
@@ -95,7 +82,7 @@ const mapStateToProps = (state: State) => ({
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<State>) => ({
-  onButtonClick(text: string) {
+  onAddClick(text: string) {
     dispatch({
       type: 'ADD_TODO',
       id: nextTodoId++,
