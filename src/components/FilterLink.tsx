@@ -1,17 +1,16 @@
 import * as React from 'react';
-import * as ReactRedux from 'react-redux';
-import TodoApp from '../models/TodoApp';
 import VisibilityFilter from '../models/VisibilityFilter';
 
-interface FilterLinkProps extends ReactRedux.DispatchProp<TodoApp> {
+interface FilterLinkProps {
   filter: VisibilityFilter;
   currentFilter: VisibilityFilter;
+  onClick: (filter: VisibilityFilter) => void;
 }
 
 const FilterLink: React.SFC<FilterLinkProps> = ({
   filter,
   currentFilter,
-  dispatch,
+  onClick,
   children,
 }) => {
   if (filter === currentFilter) {
@@ -22,10 +21,7 @@ const FilterLink: React.SFC<FilterLinkProps> = ({
       href="#"
       onClick={(e) => {
         e.preventDefault();
-        dispatch!({
-          type: 'SET_VISIBILITY_FILTER',
-          filter,
-        });
+        onClick(filter);
       }}
     >
       {children}
@@ -33,4 +29,4 @@ const FilterLink: React.SFC<FilterLinkProps> = ({
   );
 };
 
-export default ReactRedux.connect()(FilterLink);
+export default FilterLink;

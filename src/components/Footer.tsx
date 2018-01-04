@@ -4,10 +4,12 @@ import FilterLink from './FilterLink';
 
 interface FooterProps {
   visibilityFilter: VisibilityFilter;
+  onFilterClick: (filter: VisibilityFilter) => void;
 }
 
 const Footer: React.SFC<FooterProps> = ({
   visibilityFilter,
+  onFilterClick,
 }) => (
   <p>
     Show:
@@ -15,6 +17,7 @@ const Footer: React.SFC<FooterProps> = ({
     <FilterLink
       filter={VisibilityFilter.ShowAll}
       currentFilter={visibilityFilter}
+      onClick={onFilterClick}
     >
       All
     </FilterLink>
@@ -22,6 +25,7 @@ const Footer: React.SFC<FooterProps> = ({
     <FilterLink
       filter={VisibilityFilter.ShowActive}
       currentFilter={visibilityFilter}
+      onClick={onFilterClick}
     >
       Active
     </FilterLink>
@@ -29,6 +33,7 @@ const Footer: React.SFC<FooterProps> = ({
     <FilterLink
       filter={VisibilityFilter.ShowCompleted}
       currentFilter={visibilityFilter}
+      onClick={onFilterClick}
     >
       Completed
     </FilterLink>

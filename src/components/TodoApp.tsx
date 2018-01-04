@@ -13,6 +13,7 @@ interface TodoAppProps {
   visibilityFilter: VisibilityFilter;
   onAddClick: (text: string) => void;
   onTodoClick: (id: number) => void;
+  onFilterClick: (filter: VisibilityFilter) => void;
 }
 
 const getVisibleTodos = (
@@ -37,6 +38,7 @@ class TodoApp extends React.Component<TodoAppProps> {
       visibilityFilter,
       onAddClick,
       onTodoClick,
+      onFilterClick,
     } = this.props;
     const visibleTodos = getVisibleTodos(todos, visibilityFilter);
     return (
@@ -46,7 +48,10 @@ class TodoApp extends React.Component<TodoAppProps> {
           todos={visibleTodos}
           onTodoClick={onTodoClick}
         />
-        <Footer visibilityFilter={visibilityFilter} />
+        <Footer
+          visibilityFilter={visibilityFilter}
+          onFilterClick={onFilterClick}
+        />
       </div>
     );
   }
@@ -72,6 +77,12 @@ const mapDispatchToProps = (dispatch: Redux.Dispatch<State>) => ({
     dispatch({
       type: 'TOGGLE_TODO',
       id,
+    });
+  },
+  onFilterClick(filter: VisibilityFilter) {
+    dispatch({
+      type: 'SET_VISIBILITY_FILTER',
+      filter,
     });
   },
 });
