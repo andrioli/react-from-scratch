@@ -3,18 +3,42 @@ import * as ReactRedux from 'react-redux';
 import * as Redux from 'redux';
 import Todo from '../models/Todo';
 import State from '../models/TodoApp';
+import VisibilityFilter from '../models/VisibilityFilter';
+import FilterLink from './FilterLink';
 
 interface TodoAppProps {
   todos: Todo[];
+  visibilityFilter: VisibilityFilter;
   onButtonClick: (text: string) => void;
   onTodoClick: (id: number) => void;
 }
+
+const getVisibleTodos = (
+  todos: Todo[],
+  filter: VisibilityFilter,
+) => {
+  switch (filter) {
+    case VisibilityFilter.ShowAll:
+      return todos;
+    case VisibilityFilter.ShowActive:
+      return todos.filter((t) => !t.completed);
+    case VisibilityFilter.ShowCompleted:
+      return todos.filter((t) => t.completed);
+  }
+};
 
 class TodoApp extends React.Component<TodoAppProps> {
 
   private input: HTMLInputElement;
 
   public render() {
+    const {
+      todos,
+      visibilityFilter,
+      onButtonClick,
+      onTodoClick,
+    } = this.props;
+    const visibleTodos = getVisibleTodos(todos, visibilityFilter);
     return (
       <div>
         <input
@@ -24,7 +48,7 @@ class TodoApp extends React.Component<TodoAppProps> {
         />
         <button
           onClick={() => {
-            this.props.onButtonClick(this.input.value);
+            onButtonClick(this.input.value);
             this.input.value = '';
           }}
         >
@@ -32,10 +56,10 @@ class TodoApp extends React.Component<TodoAppProps> {
         </button>
         <ul>
           {
-            this.props.todos.map((todo) =>
+            visibleTodos.map((todo) =>
               <li
                 key={todo.id}
-                onClick={() => this.props.onTodoClick(todo.id)}
+                onClick={() => onTodoClick(todo.id)}
                 style={{
                   textDecoration: todo.completed ? 'line-through' : 'none',
                 }}
@@ -45,6 +69,28 @@ class TodoApp extends React.Component<TodoAppProps> {
             )
           }
         </ul>
+        Show:
+        {' '}
+        <FilterLink
+          filter={VisibilityFilter.ShowAll}
+          currentFilter={visibilityFilter}
+        >
+          All
+        </FilterLink>
+        {' '}
+        <FilterLink
+          filter={VisibilityFilter.ShowActive}
+          currentFilter={visibilityFilter}
+        >
+          Active
+        </FilterLink>
+        {' '}
+        <FilterLink
+          filter={VisibilityFilter.ShowCompleted}
+          currentFilter={visibilityFilter}
+        >
+          Completed
+        </FilterLink>
       </div>
     );
   }
@@ -55,6 +101,7 @@ let nextTodoId = 0;
 
 const mapStateToProps = (state: State) => ({
   todos: state.todos,
+  visibilityFilter: state.visibilityFilter,
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<State>) => ({
