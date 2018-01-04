@@ -5,7 +5,7 @@ import Todo from '../models/Todo';
 import State from '../models/TodoApp';
 import VisibilityFilter from '../models/VisibilityFilter';
 import AddTodo from './AddTodo';
-import FilterLink from './FilterLink';
+import Footer from './Footer';
 import TodoList from './TodoList';
 
 interface TodoAppProps {
@@ -46,28 +46,7 @@ class TodoApp extends React.Component<TodoAppProps> {
           todos={visibleTodos}
           onTodoClick={onTodoClick}
         />
-        Show:
-        {' '}
-        <FilterLink
-          filter={VisibilityFilter.ShowAll}
-          currentFilter={visibilityFilter}
-        >
-          All
-        </FilterLink>
-        {' '}
-        <FilterLink
-          filter={VisibilityFilter.ShowActive}
-          currentFilter={visibilityFilter}
-        >
-          Active
-        </FilterLink>
-        {' '}
-        <FilterLink
-          filter={VisibilityFilter.ShowCompleted}
-          currentFilter={visibilityFilter}
-        >
-          Completed
-        </FilterLink>
+        <Footer visibilityFilter={visibilityFilter} />
       </div>
     );
   }
