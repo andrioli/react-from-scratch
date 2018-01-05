@@ -1,5 +1,5 @@
 import { TodoAppAction } from '../actions';
-import { Todo } from '../models';
+import { Todo, VisibilityFilter } from '../models';
 
 const todo = (state: Todo|undefined, action: TodoAppAction) => {
   switch (action.type) {
@@ -38,3 +38,14 @@ const todos = (state: Todo[] = [], action: TodoAppAction) => {
 };
 
 export default todos;
+
+export const getVisibleTodos = (state: Todo[], filter: VisibilityFilter) => {
+  switch (filter) {
+    case VisibilityFilter.ShowAll:
+      return state;
+    case VisibilityFilter.ShowActive:
+      return state.filter((t) => !t.completed);
+    case VisibilityFilter.ShowCompleted:
+      return state.filter((t) => t.completed);
+  }
+};
