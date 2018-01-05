@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactRedux from 'react-redux';
-import { addTodo } from '../actions/todo';
-import TodoApp from '../models/TodoApp';
+import { addTodo } from '../actions';
+import { TodoApp } from '../models';
 
 const AddTodo: React.SFC<ReactRedux.DispatchProp<TodoApp>> = ({
   dispatch,

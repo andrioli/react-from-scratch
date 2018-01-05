@@ -1,5 +1,5 @@
 import * as Redux from 'redux';
-import TodoApp from '../models/TodoApp';
+import { TodoApp } from '../models';
 import todos from './todos';
 import visibilityFilter from './visibilityFilter';
 

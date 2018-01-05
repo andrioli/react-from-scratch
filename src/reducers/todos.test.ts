@@ -1,6 +1,6 @@
 import * as deepFreeze from 'deep-freeze';
-import { addTodo, toggleTodo } from '../actions/todo';
-import Todo from '../models/Todo';
+import { addTodo, toggleTodo } from '../actions';
+import { Todo } from '../models';
 import todos from './todos';
 
 it('should add a Todo correctly', () => {

@@ -1,8 +1,7 @@
 import * as ReactRedux from 'react-redux';
 import * as Redux from 'redux';
-import { setVisibilityFilter } from '../actions/visibilityFilter';
-import TodoApp from '../models/TodoApp';
-import VisibilityFilter from '../models/VisibilityFilter';
+import { setVisibilityFilter } from '../actions';
+import { TodoApp, VisibilityFilter } from '../models';
 import Link from './Link';
 
 interface FilterLinkProps {

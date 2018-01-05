@@ -1,4 +1,4 @@
-import VisibilityFilter from '../models/VisibilityFilter';
+import { VisibilityFilter } from '../models';
 
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
 

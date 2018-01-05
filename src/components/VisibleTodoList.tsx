@@ -1,9 +1,7 @@
 import * as ReactRedux from 'react-redux';
 import * as Redux from 'redux';
-import { toggleTodo } from '../actions/todo';
-import Todo from '../models/Todo';
-import TodoApp from '../models/TodoApp';
-import VisibilityFilter from '../models/VisibilityFilter';
+import { toggleTodo } from '../actions';
+import { Todo, TodoApp, VisibilityFilter } from '../models';
 import TodoList from './TodoList';
 
 const getVisibleTodos = (

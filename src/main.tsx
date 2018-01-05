@@ -5,7 +5,7 @@ import * as Redux from 'redux';
 import * as ReduxDevTools from 'redux-devtools-extension/developmentOnly';
 import * as ReduxThunk from 'redux-thunk';
 import App from './components/App';
-import todoApp from './reducers/todoApp';
+import todoApp from './reducers';
 
 const store = Redux.createStore(todoApp,
   ReduxDevTools.composeWithDevTools(Redux.applyMiddleware(ReduxThunk.default)));

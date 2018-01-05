@@ -1,5 +1,5 @@
-import { TodoAppAction } from '../actions/todoApp';
-import Todo from '../models/Todo';
+import { TodoAppAction } from '../actions';
+import { Todo } from '../models';
 
 const todo = (state: Todo|undefined, action: TodoAppAction) => {
   switch (action.type) {

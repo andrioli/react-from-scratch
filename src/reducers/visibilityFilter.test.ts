@@ -1,6 +1,6 @@
-import { setVisibilityFilter } from '../actions/visibilityFilter';
-import VisibilityFilter from '../models/VisibilityFilter';
-import visibilityFilter from '../reducers/visibilityFilter';
+import { setVisibilityFilter } from '../actions';
+import { VisibilityFilter } from '../models';
+import visibilityFilter from './visibilityFilter';
 
 it('should set visibility filter correctly', () => {
   const stateBefore = VisibilityFilter.ShowAll;
