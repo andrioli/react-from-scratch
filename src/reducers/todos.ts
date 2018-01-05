@@ -1,5 +1,6 @@
 import { TodoAppAction } from '../actions';
 import { Todo, VisibilityFilter } from '../models';
+import { getVisibilityFilter } from '../models/VisibilityFilter';
 
 const todo = (state: Todo|undefined, action: TodoAppAction) => {
   switch (action.type) {
@@ -39,8 +40,8 @@ const todos = (state: Todo[] = [], action: TodoAppAction) => {
 
 export default todos;
 
-export const getVisibleTodos = (state: Todo[], filter: VisibilityFilter) => {
-  switch (filter) {
+export const getVisibleTodos = (state: Todo[], filter: string = VisibilityFilter.ShowAll) => {
+  switch (getVisibilityFilter(filter)) {
     case VisibilityFilter.ShowAll:
       return state;
     case VisibilityFilter.ShowActive:
