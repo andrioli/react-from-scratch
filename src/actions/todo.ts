@@ -1,4 +1,4 @@
-import { v4 } from 'node-uuid';
+import v4 = require('uuid/v4');
 
 export const ADD_TODO = 'ADD_TODO';
 export const TOGGLE_TODO = 'TOGGLE_TODO';
