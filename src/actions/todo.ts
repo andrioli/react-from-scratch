@@ -1,3 +1,5 @@
+import { v4 } from 'node-uuid';
+
 export const ADD_TODO = 'ADD_TODO';
 export const TOGGLE_TODO = 'TOGGLE_TODO';
 
@@ -6,23 +8,22 @@ export type TOGGLE_TODO = typeof TOGGLE_TODO;
 
 export interface AddTodoAction {
   type: ADD_TODO;
-  id: number;
+  id: string;
   text: string;
 }
 
 export interface ToggleTodoAction {
   type: TOGGLE_TODO;
-  id: number;
+  id: string;
 }
 
-let nextTodoId = 0;
 export const addTodo: (text: string) => AddTodoAction = (text) => ({
   type: ADD_TODO,
-  id: nextTodoId++,
+  id: v4(),
   text,
 });
 
-export const toggleTodo: (id: number) => ToggleTodoAction = (id) => ({
+export const toggleTodo: (id: string) => ToggleTodoAction = (id) => ({
   type: TOGGLE_TODO,
   id,
 });

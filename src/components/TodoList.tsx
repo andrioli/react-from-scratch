@@ -4,7 +4,7 @@ import TodoComponent from './Todo';
 
 interface TodoListProps {
   todos: Todo[];
-  onTodoClick: (id: number) => void;
+  onTodoClick: (id: string) => void;
 }
 
 const TodoList: React.SFC<TodoListProps> = ({

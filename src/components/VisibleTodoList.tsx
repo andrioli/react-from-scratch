@@ -26,7 +26,7 @@ const mapStateToProps = (state: TodoApp) => ({
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<TodoApp>) => ({
-  onTodoClick(id: number) {
+  onTodoClick(id: string) {
     dispatch(toggleTodo(id));
   },
 });

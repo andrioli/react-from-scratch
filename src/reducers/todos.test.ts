@@ -6,42 +6,40 @@ import todos from './todos';
 it('should add a Todo correctly', () => {
   const stateBefore: Todo[] = [];
   const action = addTodo('Learn Redux');
-  const stateAfter: Todo[] = [
-    {
-      id: 0,
-      text: 'Learn Redux',
-      completed: false,
-    },
-  ];
 
   deepFreeze(stateBefore);
   deepFreeze(action);
 
-  expect(todos(stateBefore, action)).toEqual(stateAfter);
+  const stateAfter = todos(stateBefore, action);
+
+  expect(stateAfter.length).toEqual(1);
+  expect(stateAfter[0].id.length).toEqual(36);
+  expect(stateAfter[0].text).toEqual('Learn Redux');
+  expect(stateAfter[0].completed).toBeFalsy();
 });
 
 it ('should toggle a Todo correctly', () => {
   const stateBefore: Todo[] = [
     {
-      id: 0,
+      id: '0',
       text: 'Learn Redux',
       completed: false,
     },
     {
-      id: 1,
+      id: '1',
       text: 'Go shopping',
       completed: false,
     },
   ];
-  const action = toggleTodo(1);
+  const action = toggleTodo('1');
   const stateAfter: Todo[] = [
     {
-      id: 0,
+      id: '0',
       text: 'Learn Redux',
       completed: false,
     },
     {
-      id: 1,
+      id: '1',
       text: 'Go shopping',
       completed: true,
     },
