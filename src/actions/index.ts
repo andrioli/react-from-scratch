@@ -6,7 +6,3 @@ export {
 export {
   TodoAppAction,
 } from './todoApp';
-
-export {
-  setVisibilityFilter,
-} from './visibilityFilter';

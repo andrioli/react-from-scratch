@@ -5,7 +5,7 @@ import TodoApp from './TodoApp';
 const App = () => (
   <ReactRouter.BrowserRouter>
     <ReactRouter.Route
-      path="/"
+      path="/:filter?"
       component={TodoApp}
     />
   </ReactRouter.BrowserRouter>

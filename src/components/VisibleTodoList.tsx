@@ -18,10 +18,14 @@ const getVisibleTodos = (
   }
 };
 
-const mapStateToProps = (state: TodoApp) => ({
+interface VisibleTodoListProps {
+  filter: VisibilityFilter;
+}
+
+const mapStateToProps = (state: TodoApp, ownProps: VisibleTodoListProps) => ({
   todos: getVisibleTodos(
     state.todos,
-    state.visibilityFilter,
+    ownProps.filter,
   ),
 });
 

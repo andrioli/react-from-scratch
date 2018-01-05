@@ -1,24 +1,22 @@
-import * as ReactRedux from 'react-redux';
-import * as Redux from 'redux';
-import { setVisibilityFilter } from '../actions';
-import { TodoApp, VisibilityFilter } from '../models';
-import Link from './Link';
+import * as React from 'react';
+import { NavLink } from 'react-router-dom';
+import { VisibilityFilter } from '../models';
 
 interface FilterLinkProps {
   filter: VisibilityFilter;
 }
 
-const mapStateToProps = (state: TodoApp, ownProps: FilterLinkProps) => ({
-  active: ownProps.filter === state.visibilityFilter,
-});
+const FilterLink: React.SFC<FilterLinkProps> = ({ filter, children }) => (
+  <NavLink
+    to={filter === VisibilityFilter.ShowAll ? '/' : `/${filter}`}
+    exact={true}
+    activeStyle={{
+      textDecoration: 'none',
+      color: 'black',
+    }}
+  >
+    {children}
+  </NavLink>
+);
 
-const mapDispatchToProps = (dispatch: Redux.Dispatch<TodoApp>, ownProps: FilterLinkProps) => ({
-  onClick() {
-    dispatch(setVisibilityFilter(ownProps.filter));
-  },
-});
-
-export default ReactRedux.connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Link);
+export default FilterLink;
