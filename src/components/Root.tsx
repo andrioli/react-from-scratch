@@ -1,8 +1,9 @@
 import * as React from 'react';
 import * as ReactRedux from 'react-redux';
+import * as ReactRouter from 'react-router-dom';
 import * as Redux from 'redux';
 import { Todo } from '../models';
-import App from './App';
+import TodoApp from './TodoApp';
 
 interface RootProps {
   store: Redux.Store<Todo[]>;
@@ -10,7 +11,12 @@ interface RootProps {
 
 const Root: React.SFC<RootProps> = ({ store }) => (
   <ReactRedux.Provider store={store}>
-    <App />
+    <ReactRouter.BrowserRouter>
+      <ReactRouter.Route
+        path="/:filter?"
+        component={TodoApp}
+      />
+    </ReactRouter.BrowserRouter>
   </ReactRedux.Provider>
 );
 
