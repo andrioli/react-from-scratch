@@ -1,11 +1,11 @@
 import * as React from 'react';
 import * as ReactRedux from 'react-redux';
 import * as Redux from 'redux';
-import { TodoApp } from '../models';
+import { Todo } from '../models';
 import App from './App';
 
 interface RootProps {
-  store: Redux.Store<TodoApp>;
+  store: Redux.Store<Todo[]>;
 }
 
 const Root: React.SFC<RootProps> = ({ store }) => (
