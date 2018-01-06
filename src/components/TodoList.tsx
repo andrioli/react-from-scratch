@@ -7,10 +7,10 @@ interface TodoListProps {
   onTodoClick: (id: string) => void;
 }
 
-const TodoList: React.SFC<TodoListProps> = ({
+const TodoList = ({
   todos,
   onTodoClick,
-}) => (
+}: TodoListProps) => (
   <ul>
     {
       todos.map((todo) =>

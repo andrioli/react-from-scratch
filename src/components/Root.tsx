@@ -9,7 +9,7 @@ interface RootProps {
   store: Redux.Store<Todo[]>;
 }
 
-const Root: React.SFC<RootProps> = ({ store }) => (
+const Root = ({ store }: RootProps) => (
   <ReactRedux.Provider store={store}>
     <ReactRouter.BrowserRouter>
       <ReactRouter.Route

@@ -3,9 +3,9 @@ import * as ReactRedux from 'react-redux';
 import { addTodo } from '../actions';
 import { Todo } from '../models';
 
-const AddTodo: React.SFC<ReactRedux.DispatchProp<Todo[]>> = ({
+const AddTodo = ({
   dispatch,
-}) => {
+}: ReactRedux.DispatchProp<Todo[]>) => {
   let input: HTMLInputElement;
   return (
     <div>

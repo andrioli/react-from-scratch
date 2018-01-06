@@ -4,9 +4,10 @@ import { VisibilityFilter } from '../models';
 
 interface FilterLinkProps {
   filter: VisibilityFilter;
+  children: React.ReactNode;
 }
 
-const FilterLink: React.SFC<FilterLinkProps> = ({ filter, children }) => (
+const FilterLink = ({ filter, children }: FilterLinkProps) => (
   <NavLink
     to={filter === VisibilityFilter.ShowAll ? '/' : `/${filter}`}
     exact={true}

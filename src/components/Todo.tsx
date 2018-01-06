@@ -6,11 +6,11 @@ interface TodoProps {
   text: string;
 }
 
-const Todo: React.SFC<TodoProps> = ({
+const Todo = ({
   onClick,
   completed,
   text,
-}) => (
+}: TodoProps) => (
   <li
     onClick={onClick}
     style={{
