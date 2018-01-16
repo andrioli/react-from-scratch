@@ -1,5 +1,5 @@
 import * as deepFreeze from 'deep-freeze';
-import { addTodo, editTodo, toggleTodo } from '../actions';
+import { addTodo, deleteTodo, editTodo, toggleTodo } from '../actions';
 import { Todo } from '../models';
 import todos from './todos';
 
@@ -74,6 +74,34 @@ it ('should edit a Todo correctly', () => {
     {
       id: '1',
       text: 'Buy milk',
+      completed: false,
+    },
+  ];
+
+  deepFreeze(stateBefore);
+  deepFreeze(action);
+
+  expect(todos(stateBefore, action)).toEqual(stateAfter);
+});
+
+it ('should delete a Todo correctly', () => {
+  const stateBefore: Todo[] = [
+    {
+      id: '0',
+      text: 'Learn Redux',
+      completed: false,
+    },
+    {
+      id: '1',
+      text: 'Go shopping',
+      completed: false,
+    },
+  ];
+  const action = deleteTodo('0');
+  const stateAfter: Todo[] = [
+    {
+      id: '1',
+      text: 'Go shopping',
       completed: false,
     },
   ];
