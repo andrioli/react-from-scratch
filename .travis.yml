@@ -8,7 +8,10 @@ node_js:
 
 script:
   - npm run lint
-  - npm test
+  - npm test -- --coverage --mapCoverage
+
+after_success:
+  - npm run coveralls < coverage/lcov.info
 
 cache:
   directories:
