@@ -1,5 +1,6 @@
 export {
   addTodo,
+  editTodo,
   toggleTodo,
 } from './todo';
 

@@ -19,6 +19,15 @@ const todo = (state: Todo|undefined, action: TodoAppAction) => {
         ...state!,
         completed: !state!.completed,
       };
+    case 'EDIT_TODO':
+      if (state!.id !== action.id) {
+        return state;
+      }
+
+      return {
+        ...state!,
+        text: action.text,
+      };
     default:
       return state;
   }
@@ -32,6 +41,7 @@ const todos = (state: Todo[] = [], action: TodoAppAction) => {
         todo(undefined, action)!,
       ];
     case 'TOGGLE_TODO':
+    case 'EDIT_TODO':
       return state.map((t) => todo(t, action)!);
     default:
       return state;

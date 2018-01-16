@@ -2,9 +2,11 @@ import v4 = require('uuid/v4');
 
 export const ADD_TODO = 'ADD_TODO';
 export const TOGGLE_TODO = 'TOGGLE_TODO';
+export const EDIT_TODO = 'EDIT_TODO';
 
 export type ADD_TODO = typeof ADD_TODO;
 export type TOGGLE_TODO = typeof TOGGLE_TODO;
+export type EDIT_TODO = typeof EDIT_TODO;
 
 export interface AddTodoAction {
   type: ADD_TODO;
@@ -15,6 +17,12 @@ export interface AddTodoAction {
 export interface ToggleTodoAction {
   type: TOGGLE_TODO;
   id: string;
+}
+
+export interface EditTodoAction {
+  type: EDIT_TODO;
+  id: string;
+  text: string;
 }
 
 export const addTodo: (text: string) => AddTodoAction = (text) => ({
@@ -28,5 +36,12 @@ export const toggleTodo: (id: string) => ToggleTodoAction = (id) => ({
   id,
 });
 
+export const editTodo: (id: string, text: string) => EditTodoAction = (id, text) => ({
+  type: EDIT_TODO,
+  id,
+  text,
+});
+
 export type TodoAction = AddTodoAction |
-                         ToggleTodoAction;
+                         ToggleTodoAction |
+                         EditTodoAction;
