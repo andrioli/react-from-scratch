@@ -79,6 +79,9 @@
       "ts",
       "tsx",
       "js"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}"
     ]
   }
 }
