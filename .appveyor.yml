@@ -22,4 +22,10 @@ build_script:
 
 test_script:
   - npm run lint
-  - npm test
+  - npm test -- --coverage --mapCoverage
+
+after_test:
+  - 7z a coverage.zip coverage
+
+artifacts:
+  - path: coverage.zip
