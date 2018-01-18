@@ -1,5 +1,5 @@
 import * as deepFreeze from 'deep-freeze';
-import { addTodo, deleteTodo, editTodo, toggleTodo } from '../actions';
+import { addTodo, deleteTodo, editTodo, toggleAll, toggleTodo } from '../actions';
 import { Todo } from '../models';
 import todos from './todos';
 
@@ -99,6 +99,72 @@ it ('should delete a Todo correctly', () => {
   ];
   const action = deleteTodo('0');
   const stateAfter: Todo[] = [
+    {
+      id: '1',
+      text: 'Go shopping',
+      completed: false,
+    },
+  ];
+
+  deepFreeze(stateBefore);
+  deepFreeze(action);
+
+  expect(todos(stateBefore, action)).toEqual(stateAfter);
+});
+
+it ('should toggle all Todos as complete correctly', () => {
+  const stateBefore: Todo[] = [
+    {
+      id: '0',
+      text: 'Learn Redux',
+      completed: true,
+    },
+    {
+      id: '1',
+      text: 'Go shopping',
+      completed: false,
+    },
+  ];
+  const action = toggleAll();
+  const stateAfter: Todo[] = [
+    {
+      id: '0',
+      text: 'Learn Redux',
+      completed: true,
+    },
+    {
+      id: '1',
+      text: 'Go shopping',
+      completed: true,
+    },
+  ];
+
+  deepFreeze(stateBefore);
+  deepFreeze(action);
+
+  expect(todos(stateBefore, action)).toEqual(stateAfter);
+});
+
+it ('should toggle all Todos as incomplete correctly', () => {
+  const stateBefore: Todo[] = [
+    {
+      id: '0',
+      text: 'Learn Redux',
+      completed: true,
+    },
+    {
+      id: '1',
+      text: 'Go shopping',
+      completed: true,
+    },
+  ];
+  const action = toggleAll();
+  const stateAfter: Todo[] = [
+    {
+      id: '0',
+      text: 'Learn Redux',
+      completed: false,
+    },
     {
       id: '1',
       text: 'Go shopping',

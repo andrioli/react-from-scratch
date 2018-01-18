@@ -45,6 +45,11 @@ const todos = (state: Todo[] = [], action: TodoAppAction) => {
       return state.map((t) => todo(t, action)!);
     case 'DELETE_TODO':
       return state.filter((t) => t.id !== action.id);
+    case 'TOGGLE_ALL':
+      const completed = state.map((t) => t.completed).indexOf(false) >= 0;
+      return state.map((t) => ({
+        ...t, completed,
+      }));
     default:
       return state;
   }

@@ -4,11 +4,13 @@ export const ADD_TODO = 'ADD_TODO';
 export const TOGGLE_TODO = 'TOGGLE_TODO';
 export const EDIT_TODO = 'EDIT_TODO';
 export const DELETE_TODO = 'DELETE_TODO';
+export const TOGGLE_ALL = 'TOGGLE_ALL';
 
 export type ADD_TODO = typeof ADD_TODO;
 export type TOGGLE_TODO = typeof TOGGLE_TODO;
 export type EDIT_TODO = typeof EDIT_TODO;
 export type DELETE_TODO = typeof DELETE_TODO;
+export type TOGGLE_ALL = typeof TOGGLE_ALL;
 
 export interface AddTodoAction {
   type: ADD_TODO;
@@ -30,6 +32,10 @@ export interface EditTodoAction {
 export interface DeleteTodoAction {
   type: DELETE_TODO;
   id: string;
+}
+
+export interface ToggleAllAction {
+  type: TOGGLE_ALL;
 }
 
 export const addTodo: (text: string) => AddTodoAction = (text) => ({
@@ -54,7 +60,12 @@ export const deleteTodo: (id: string) => DeleteTodoAction = (id) => ({
   id,
 });
 
+export const toggleAll: () => ToggleAllAction = () => ({
+  type: TOGGLE_ALL,
+});
+
 export type TodoAction = AddTodoAction |
                          ToggleTodoAction |
                          EditTodoAction |
-                         DeleteTodoAction;
+                         DeleteTodoAction |
+                         ToggleAllAction;
