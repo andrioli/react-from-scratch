@@ -50,6 +50,8 @@ const todos = (state: Todo[] = [], action: TodoAppAction) => {
       return state.map((t) => ({
         ...t, completed,
       }));
+    case 'CLEAR_COMPLETED':
+      return state.filter((t) => !t.completed);
     default:
       return state;
   }

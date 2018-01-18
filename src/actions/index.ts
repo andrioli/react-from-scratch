@@ -1,5 +1,6 @@
 export {
   addTodo,
+  clearCompleted,
   deleteTodo,
   editTodo,
   toggleAll,

@@ -1,11 +1,11 @@
 import * as deepFreeze from 'deep-freeze';
-import { addTodo, deleteTodo, editTodo, toggleAll, toggleTodo } from '../actions';
+import * as actions from '../actions';
 import { Todo } from '../models';
 import todos from './todos';
 
 it('should add a Todo correctly', () => {
   const stateBefore: Todo[] = [];
-  const action = addTodo('Learn Redux');
+  const action = actions.addTodo('Learn Redux');
 
   deepFreeze(stateBefore);
   deepFreeze(action);
@@ -31,7 +31,7 @@ it ('should toggle a Todo correctly', () => {
       completed: false,
     },
   ];
-  const action = toggleTodo('1');
+  const action = actions.toggleTodo('1');
   const stateAfter: Todo[] = [
     {
       id: '0',
@@ -64,7 +64,7 @@ it ('should edit a Todo correctly', () => {
       completed: false,
     },
   ];
-  const action = editTodo('1', 'Buy milk');
+  const action = actions.editTodo('1', 'Buy milk');
   const stateAfter: Todo[] = [
     {
       id: '0',
@@ -97,7 +97,7 @@ it ('should delete a Todo correctly', () => {
       completed: false,
     },
   ];
-  const action = deleteTodo('0');
+  const action = actions.deleteTodo('0');
   const stateAfter: Todo[] = [
     {
       id: '1',
@@ -125,7 +125,7 @@ it ('should toggle all Todos as complete correctly', () => {
       completed: false,
     },
   ];
-  const action = toggleAll();
+  const action = actions.toggleAll();
   const stateAfter: Todo[] = [
     {
       id: '0',
@@ -158,13 +158,41 @@ it ('should toggle all Todos as incomplete correctly', () => {
       completed: true,
     },
   ];
-  const action = toggleAll();
+  const action = actions.toggleAll();
   const stateAfter: Todo[] = [
     {
       id: '0',
       text: 'Learn Redux',
       completed: false,
     },
+    {
+      id: '1',
+      text: 'Go shopping',
+      completed: false,
+    },
+  ];
+
+  deepFreeze(stateBefore);
+  deepFreeze(action);
+
+  expect(todos(stateBefore, action)).toEqual(stateAfter);
+});
+
+it ('should clear all completed Todos correctly', () => {
+  const stateBefore: Todo[] = [
+    {
+      id: '0',
+      text: 'Learn Redux',
+      completed: true,
+    },
+    {
+      id: '1',
+      text: 'Go shopping',
+      completed: false,
+    },
+  ];
+  const action = actions.clearCompleted();
+  const stateAfter: Todo[] = [
     {
       id: '1',
       text: 'Go shopping',
