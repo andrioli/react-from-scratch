@@ -2,7 +2,7 @@ import * as ReactRedux from 'react-redux';
 import * as ReactRouter from 'react-router';
 import * as Redux from 'redux';
 import { deleteTodo, toggleAll, toggleTodo } from '../actions';
-import { Todo } from '../models';
+import { Todo, VisibilityFilter } from '../models';
 import { getVisibleTodos } from '../reducers';
 import TodoList from './TodoList';
 
@@ -13,6 +13,9 @@ type VisibleTodoListProps = ReactRouter.RouteComponentProps<{
 const mapStateToProps = (state: Todo[], ownProps: VisibleTodoListProps) => ({
   todos: getVisibleTodos(state, ownProps.match.params.filter),
   hidden: state.length === 0,
+  isAllCompleted:
+    getVisibleTodos(state, VisibilityFilter.ShowAll).length ===
+    getVisibleTodos(state, VisibilityFilter.ShowCompleted).length,
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<Todo[]>) => ({
