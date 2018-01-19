@@ -25,7 +25,7 @@ const TodoList = ({
       className="toggle-all"
       type="checkbox"
       checked={isAllCompleted}
-      onClick={onToggleAllClick}
+      onChange={onToggleAllClick}
     />
     <label htmlFor="toggle-all">Mark all as complete</label>
     <ul className="todo-list">

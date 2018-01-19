@@ -21,7 +21,7 @@ const Todo = ({
         className="toggle"
         type="checkbox"
         checked={completed}
-        onClick={onToggleClick}
+        onChange={onToggleClick}
       />
       <label>{text}</label>
       <button className="destroy" onClick={onDeleteClick} />
