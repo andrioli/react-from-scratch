@@ -11,7 +11,7 @@ const TodoList = ({
   todos,
   onTodoClick,
 }: TodoListProps) => (
-  <ul>
+  <ul className="todo-list">
     {
       todos.map((todo) =>
         <TodoComponent

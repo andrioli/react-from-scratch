@@ -3,27 +3,29 @@ import { VisibilityFilter } from '../models';
 import FilterLink from './FilterLink';
 
 const Footer = () => (
-  <p>
-    Show:
-    {' '}
-    <FilterLink
-      filter={VisibilityFilter.ShowAll}
-    >
-      All
-    </FilterLink>
-    {' '}
-    <FilterLink
-      filter={VisibilityFilter.ShowActive}
-    >
-      Active
-    </FilterLink>
-    {' '}
-    <FilterLink
-      filter={VisibilityFilter.ShowCompleted}
-    >
-      Completed
-    </FilterLink>
-  </p>
+  <ul className="filters">
+    <li>
+      <FilterLink
+        filter={VisibilityFilter.ShowAll}
+      >
+        All
+      </FilterLink>
+    </li>
+    <li>
+      <FilterLink
+        filter={VisibilityFilter.ShowActive}
+      >
+        Active
+      </FilterLink>
+    </li>
+    <li>
+      <FilterLink
+        filter={VisibilityFilter.ShowCompleted}
+      >
+        Completed
+      </FilterLink>
+    </li>
+  </ul>
 );
 
 export default Footer;

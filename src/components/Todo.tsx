@@ -12,12 +12,13 @@ const Todo = ({
   text,
 }: TodoProps) => (
   <li
+    className={completed ? 'completed' : ''}
     onClick={onClick}
-    style={{
-      textDecoration: completed ? 'line-through' : 'none',
-    }}
   >
-    {text}
+    <div className="view">
+      <input className="toggle" type="checkbox" checked={completed} />
+      <label>{text}</label>
+    </div>
   </li>
 );
 

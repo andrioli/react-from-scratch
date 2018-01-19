@@ -11,10 +11,7 @@ const FilterLink = ({ filter, children }: FilterLinkProps) => (
   <NavLink
     to={filter === VisibilityFilter.ShowAll ? '/' : `/${filter}`}
     exact={true}
-    activeStyle={{
-      textDecoration: 'none',
-      color: 'black',
-    }}
+    activeClassName={'selected'}
   >
     {children}
   </NavLink>

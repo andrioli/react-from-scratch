@@ -29,7 +29,7 @@ const config: webpack.Configuration = {
         ],
       },
       {
-        test: /\.scss$/,
+        test: [/\.scss$/, /\.css$/],
         use: ExtractTextWebpackPlugin.extract({
           fallback: 'style-loader',
           use: [
