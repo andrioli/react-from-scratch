@@ -5,11 +5,11 @@ import { Todo, VisibilityFilter } from '../models';
 import FilterLink from './FilterLink';
 
 interface FooterProps extends ReactRouter.RouteComponentProps<{}> {
-  hasTodos: boolean;
+  hidden: boolean;
 }
 
-const Footer = ({ hasTodos }: FooterProps) => (
-  <footer className="footer" hidden={!hasTodos}>
+const Footer = ({ hidden }: FooterProps) => (
+  <footer className="footer" hidden={hidden}>
     <ul className="filters">
       <li>
         <FilterLink
@@ -37,7 +37,7 @@ const Footer = ({ hasTodos }: FooterProps) => (
 );
 
 const mapStateToProps = (state: Todo[]) => ({
-  hasTodos: state.length > 0,
+  hidden: state.length === 0,
 });
 
 export default ReactRouter.withRouter(

@@ -12,6 +12,7 @@ type VisibleTodoListProps = ReactRouter.RouteComponentProps<{
 
 const mapStateToProps = (state: Todo[], ownProps: VisibleTodoListProps) => ({
   todos: getVisibleTodos(state, ownProps.match.params.filter),
+  hidden: state.length === 0,
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<Todo[]>) => ({

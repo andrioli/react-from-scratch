@@ -16,9 +16,7 @@ const TodoApp = () => (
         <h1>todos</h1>
         <AddTodo />
       </header>
-      <section className="main">
-        <VisibleTodoList />
-      </section>
+      <VisibleTodoList />
       <Footer />
     </section>
     <footer className="info">
