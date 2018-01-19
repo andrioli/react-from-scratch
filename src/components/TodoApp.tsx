@@ -19,9 +19,7 @@ const TodoApp = () => (
       <section className="main">
         <VisibleTodoList />
       </section>
-      <footer className="footer">
-        <Footer />
-      </footer>
+      <Footer />
     </section>
     <footer className="info">
       <p>Double-click to edit a todo</p>
