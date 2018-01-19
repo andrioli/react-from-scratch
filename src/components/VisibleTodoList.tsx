@@ -15,7 +15,7 @@ const mapStateToProps = (state: Todo[], ownProps: VisibleTodoListProps) => ({
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<Todo[]>) => ({
-  onTodoClick(id: string) {
+  onToggleTodoClick(id: string) {
     dispatch(toggleTodo(id));
   },
   onToggleAllClick() {

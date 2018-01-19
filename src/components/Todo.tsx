@@ -1,22 +1,26 @@
 import * as React from 'react';
 
 interface TodoProps {
-  onClick: () => void;
+  onToggleClick: () => void;
   completed: boolean;
   text: string;
 }
 
 const Todo = ({
-  onClick,
+  onToggleClick,
   completed,
   text,
 }: TodoProps) => (
   <li
     className={completed ? 'completed' : ''}
-    onClick={onClick}
   >
     <div className="view">
-      <input className="toggle" type="checkbox" checked={completed} />
+      <input
+        className="toggle"
+        type="checkbox"
+        checked={completed}
+        onClick={onToggleClick}
+      />
       <label>{text}</label>
     </div>
   </li>
