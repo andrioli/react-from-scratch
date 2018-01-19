@@ -5,6 +5,7 @@ import TodoComponent from './Todo';
 interface TodoListProps {
   todos: Todo[];
   onToggleTodoClick: (id: string) => void;
+  onDeleteTodoClick: (id: string) => void;
   onToggleAllClick: () => void;
 }
 
@@ -13,6 +14,7 @@ const isAllCompleted = (todos: Todo[]) => todos.map((t) => t.completed).indexOf(
 const TodoList = ({
   todos,
   onToggleTodoClick,
+  onDeleteTodoClick,
   onToggleAllClick,
 }: TodoListProps) => (
   <div>
@@ -30,6 +32,7 @@ const TodoList = ({
           <TodoComponent
             key={todo.id}
             onToggleClick={() => onToggleTodoClick(todo.id)}
+            onDeleteClick={() => onDeleteTodoClick(todo.id)}
             {...todo}
           />,
         )

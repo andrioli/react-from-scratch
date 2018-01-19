@@ -2,12 +2,14 @@ import * as React from 'react';
 
 interface TodoProps {
   onToggleClick: () => void;
+  onDeleteClick: () => void;
   completed: boolean;
   text: string;
 }
 
 const Todo = ({
   onToggleClick,
+  onDeleteClick,
   completed,
   text,
 }: TodoProps) => (
@@ -22,6 +24,7 @@ const Todo = ({
         onClick={onToggleClick}
       />
       <label>{text}</label>
+      <button className="destroy" onClick={onDeleteClick} />
     </div>
   </li>
 );
