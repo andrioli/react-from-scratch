@@ -13,7 +13,7 @@ before_install:
 script:
   - npm run compile
   - npm run lint
-  - npm test -- --coverage --mapCoverage
+  - npm test -- --coverage
 
 after_success:
   - npm run coveralls < coverage/lcov.info

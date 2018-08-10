@@ -23,7 +23,7 @@ build_script:
 
 test_script:
   - npm run lint
-  - npm test -- --coverage --mapCoverage
+  - npm test -- --coverage
 
 after_test:
   - 7z a coverage.zip coverage
